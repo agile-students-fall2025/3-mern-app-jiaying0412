@@ -22,6 +22,27 @@ mongoose
 const { Message } = require('./models/Message')
 const { User } = require('./models/User')
 
+// a route to handle fetching all About Page content
+app.get('/api/about', (req, res) => {
+  const aboutData = {
+      title: 'Here is a little about me!',
+      body: `Hello! I’m Jiaying, a senior majoring in Interactive Media Arts at Tisch and minoring in Computer Science. 
+      I’m from New York, and my favorite color is blue. I enjoy listening to K-pop and R&B music, and in my free time 
+      I love drawing, DIYing, and crocheting—a hobby I picked up during the pandemic. At this point, I’ve collected a small 
+      mountain of yarn at home and enjoy making little accessories like bags and charms. I’m especially interested in projects 
+      that combine art and technology, particularly those that explore storytelling or playful interaction. I’m also a big fan 
+      of coffee and anything matcha-flavored.
+      
+      Over the summer, my family and I took a short trip to Banff, Canada, where we went hiking and saw lots of beautiful 
+      lakes and scenery. I also went on a trip to Boston with my friends,it was my first time traveling without my family, 
+      and I got to celebrate my birthday right before the new semester began, which made the break even more special.`, 
+      imgUrl: "/Jiaying.jpeg"
+  };
+
+  res.json(aboutData); // Send JSON response
+});
+
+
 // a route to handle fetching all messages
 app.get('/messages', async (req, res) => {
   // load all messages from database
@@ -77,6 +98,7 @@ app.post('/messages/save', async (req, res) => {
     })
   }
 })
+
 
 // export the express app we created to make it available to other modules
 module.exports = app // CommonJS export style!
